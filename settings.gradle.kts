@@ -22,6 +22,5 @@ dependencyResolutionManagement {
 rootProject.name = "NavigationSample"
 include(":app")
 
-include(":code_generator")
 include(":code_generator:annotation")
 include(":code_generator:processor")

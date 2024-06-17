@@ -70,5 +70,4 @@ dependencies {
     implementation(libs.androidx.navigation.compose)
     implementation(project(path = ":code_generator:annotation"))
     ksp(project(path = ":code_generator:processor"))
-
 }

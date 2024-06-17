@@ -2,7 +2,7 @@ package com.sass.annotation
 
 
 @Target(AnnotationTarget.FUNCTION)
-@Retention(AnnotationRetention.SOURCE)
+@Retention(AnnotationRetention.RUNTIME)
 annotation class NavigationNode(
     val route: String,
     val args: Array<String>,

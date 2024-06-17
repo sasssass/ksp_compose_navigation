@@ -22,7 +22,7 @@ class NodeProcessor(
     private val codeGenerator: CodeGenerator
 ): SymbolProcessor {
     override fun process(resolver: Resolver): List<KSAnnotated> {
-        logger.info("FragmentFactoryProcessor was invoked.")
+        logger.info("NodeProcessor was invoked.")
         val symbols = resolver.getSymbolsWithAnnotation(NavigationNode::class.qualifiedName!!)
         val ret = mutableListOf<KSAnnotated>()
         symbols.forEach { symbol ->
@@ -36,17 +36,14 @@ class NodeProcessor(
                 ret.add(symbol)
             }
         }
-
         return ret
     }
 
     private fun generateCode(symbol: KSFunctionDeclaration, route: String, args: ArrayList<String>,
                              optionalArgs: ArrayList<String>) {
-        // Generate code here
-        // This is just an example, modify as needed
-        val className = symbol.simpleName.asString()
+        val functionName = symbol.simpleName.asString()
         val packageName = symbol.packageName.asString()
-        val fileName = "${className}GraphNode"
+        val fileName = "${functionName}GraphNode"
 
         val typeBuilder = TypeSpec.objectBuilder(fileName)
         typeBuilder.addProperty(
@@ -112,9 +109,9 @@ class NodeProcessor(
     }
 
 
+
     private fun generateNavigationRoute(rawRoute: String, args: ArrayList<String>, optionalArgs: ArrayList<String>): FunSpec {
         val funBuilder = FunSpec.builder("navigationRoute")
-
         val argsCode = buildString {
             args.forEach {
                 funBuilder.addParameter(
@@ -140,10 +137,8 @@ class NodeProcessor(
                     append("append(\"?\")")
                 append("\n")
                 append("""
-                    if (optionalArg_$it != null)
-                        {
-                            append("$it=${'$'}optionalArg_$it")
-                        
+                    if (optionalArg_$it != null) {
+                        append("$it=${'$'}optionalArg_$it")
                 """.trimIndent())
                 append("\n")
                 if (index < optionalArgs.size - 1) {

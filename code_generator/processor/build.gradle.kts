@@ -10,6 +10,6 @@ java {
 
 dependencies {
     implementation(project(":code_generator:annotation"))
-    implementation("com.google.devtools.ksp:symbol-processing-api:2.0.0-1.0.21")
-    implementation("com.squareup:kotlinpoet-ksp:1.16.0")
+    implementation(libs.symbol.processing)
+    implementation(libs.kotlinpoet)
 }

@@ -64,7 +64,7 @@ class NodeProcessor(
                     .initializer("arrayOf(${optionalArgs.joinToString { "\"$it\"" }})")
                     .addModifiers(KModifier.PRIVATE)
                     .build()
-            ).addFunction(generateNavigationRoute(route, args, optionalArgs))
+            ).addFunction(generateNavigationRoute(args, optionalArgs))
 
         optionalArgs.forEach {
             typeBuilder.addProperty(
@@ -110,7 +110,7 @@ class NodeProcessor(
 
 
 
-    private fun generateNavigationRoute(rawRoute: String, args: ArrayList<String>, optionalArgs: ArrayList<String>): FunSpec {
+    private fun generateNavigationRoute(args: ArrayList<String>, optionalArgs: ArrayList<String>): FunSpec {
         val funBuilder = FunSpec.builder("navigationRoute")
         val argsCode = buildString {
             args.forEach {
@@ -142,6 +142,7 @@ class NodeProcessor(
                 """.trimIndent())
                 append("\n")
                 if (index < optionalArgs.size - 1) {
+                    append("\t")
                     append("""
                         append("&")
                     """.trimIndent())

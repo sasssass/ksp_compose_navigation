@@ -68,6 +68,6 @@ dependencies {
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
     implementation(libs.androidx.navigation.compose)
-    implementation(project(path = ":code_generator:annotation"))
-    ksp(project(path = ":code_generator:processor"))
+    implementation(project(path = ":navigation:annotation"))
+    ksp(project(path = ":navigation:processor"))
 }

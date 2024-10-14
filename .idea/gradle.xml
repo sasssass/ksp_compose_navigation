@@ -10,9 +10,9 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
-            <option value="$PROJECT_DIR$/code_generator" />
-            <option value="$PROJECT_DIR$/code_generator/annotation" />
-            <option value="$PROJECT_DIR$/code_generator/processor" />
+            <option value="$PROJECT_DIR$/navigation" />
+            <option value="$PROJECT_DIR$/navigation/annotation" />
+            <option value="$PROJECT_DIR$/navigation/processor" />
           </set>
         </option>
         <option name="resolveExternalAnnotations" value="false" />
